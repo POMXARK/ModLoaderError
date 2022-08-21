@@ -17,6 +17,7 @@ namespace ModLoader
         protected IDocument document;
         protected IBrowsingContext context;
 
+
         internal BaseParse(string url)
         {
             this.url = url;
@@ -36,5 +37,12 @@ namespace ModLoader
         {
             document = await context.OpenAsync(url);
         }
+
+        public string InnerHtml()
+        {
+
+            return "";
+        }
+
     }
 }

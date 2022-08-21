@@ -10,7 +10,8 @@ namespace ModLoader
 {
     internal interface IParseConfig
     {
-        string Name { get; }
+        //string Name { get; }
+        
         string DateUpdate { get; set; }
         string LinkToPageMod { get; set; }
         string LinkDownload { get; set; }

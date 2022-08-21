@@ -35,10 +35,17 @@ namespace ModLoader
 
             //HtmlOutput.Text = await test.parseSynthira();
 
-            SynthiraRu soup = new SynthiraRu("https://synthira.ru/");
+            SynthiraRu soup = new SynthiraRu("https://synthira.ru/load/drugie_igry/the_sims_4/");
             await soup.ParseData();
+            //HtmlOutput.Text = soup.Names.Text();
+            HtmlOutput.Text = soup.Names.Html();
             //HtmlOutput.Text = soup.Document;
-            HtmlOutput.Text = soup.Name;
+            //HtmlOutput.Text = string.Join(",", soup.Names);
+            //foreach (var item in soup.Names)
+            //{
+            //   HtmlOutput.Text = item.InnerHtml;
+            //}
+
             // await Method();
 
             //HtmlOutput.Text = await MethodWithResult();
