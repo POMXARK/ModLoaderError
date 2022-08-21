@@ -46,8 +46,8 @@ namespace AngleSharpExtantions
         public static IElement Find(this IElement elementHtml, string cssSelectors)
         {return Document(elementHtml).QuerySelector(cssSelectors);}
 
-        public static IElement Find(this IHtmlCollection<IElement> htmlCollection, string cssSelectors)
-        { return Document(htmlCollection).QuerySelector(cssSelectors); }
+                public static IElement Find(this IHtmlCollection<IElement> htmlCollection, string cssSelectors)
+        {return Document(htmlCollection).QuerySelector(cssSelectors);}
 
         public static IHtmlCollection<IElement> FindAll(this IElement elementHtml, string cssSelectors)
         {return Document(elementHtml).QuerySelectorAll(cssSelectors);}

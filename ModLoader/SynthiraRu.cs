@@ -30,14 +30,15 @@ namespace ModLoader
         public string Img { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool IsUpdate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IHtmlCollection<IElement> Names => FindAll(".filekmod .mvis");
+        public IHtmlCollection<IElement> Names => FindAll(".filekmod .entryLink");
 
+        public IHtmlCollection<IElement> Descriptions => FindAll(".messzhfg span");
 
         public string GetData()
         {
             var test = FindAll(".filekmod");
             //test.Html();
-            return test.Find(".mvis").Html();
+            return test.FindAll(".entryLink").Text();
             //var context = BrowsingContext.New(Configuration.Default);
             //var document = await context.OpenAsync(r => r.Content(test.Html()));
             //return document.ToHtml();
