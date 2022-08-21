@@ -35,7 +35,7 @@ namespace ModLoader
 
         public string GetData()
         {
-            var test = Find(".filekmod");
+            var test = FindAll(".filekmod");
             //test.Html();
             return test.Find(".mvis").Html();
             //var context = BrowsingContext.New(Configuration.Default);
