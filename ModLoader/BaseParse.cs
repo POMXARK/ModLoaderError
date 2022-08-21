@@ -32,17 +32,21 @@ namespace ModLoader
 
         public string Url{get => url; set => url = value;}
 
+        public IElement Find(string cssSelectors)
+        {
+            return document.QuerySelector(cssSelectors);
+        }
+
+        public IHtmlCollection<IElement> FindAll(string cssSelectors)
+        {
+            return document.QuerySelectorAll(cssSelectors);
+        }
 
         async public Task ParseData()
         {
             document = await context.OpenAsync(url);
         }
 
-        public string InnerHtml()
-        {
-
-            return "";
-        }
 
     }
 }

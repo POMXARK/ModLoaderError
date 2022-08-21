@@ -88,7 +88,7 @@
     </ApplicationDefinition>
     <Compile Include="BaseParse.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="Extantions.cs" />
+    <Compile Include="AngleSharpExtantions.cs" />
     <Compile Include="IBaseParse.cs" />
     <Compile Include="IParseData.cs" />
     <Compile Include="IParseConfig.cs" />

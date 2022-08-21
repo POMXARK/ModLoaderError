@@ -18,7 +18,7 @@ namespace ModLoader
         string Img { get; set; }
         string Description { get; set; }
         bool IsUpdate { get; set; }
-        void GetData();
+        //Task GetData();
 
     }
 }

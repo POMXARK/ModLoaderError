@@ -1,14 +1,17 @@
-﻿using AngleSharp.Dom;
+﻿using AngleSharp;
+using AngleSharp.Dom;
+using AngleSharp.Html.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 
-namespace ModLoader
+namespace AngleSharpExtantions
 {
-    static class Extantions
+    static class AngleSharpExtantions
     {
         public static string Text(this IHtmlCollection<IElement> htmlCollection)
         {
@@ -29,5 +32,16 @@ namespace ModLoader
             }
             return string.Join(", ", temp.ToArray());
         }
+
+        public static IElement Find(this IElement elementHtml, string cssSelectors)
+        {
+            var parser = new HtmlParser(new HtmlParserOptions
+            {
+                IsNotConsumingCharacterReferences = true,
+            });
+            IDocument document = parser.ParseDocument(elementHtml.Html());
+            return document.QuerySelector(cssSelectors);
+        }
+
     }
 }
