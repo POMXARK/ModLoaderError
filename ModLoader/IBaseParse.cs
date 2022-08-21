@@ -14,5 +14,7 @@ namespace ModLoader
         IBrowsingContext Context { get;}
         string Document { get;}
         string Url { get; set; }
+        IHtmlCollection<IElement> FindAll(string cssSelectors);
+        IElement Find(string cssSelectors);
     }
 }

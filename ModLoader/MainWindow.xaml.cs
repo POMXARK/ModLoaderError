@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AngleSharp;
+using AngleSharpExtantions;
 using CSharpBeautifulSoup;
 
 
@@ -38,7 +39,9 @@ namespace ModLoader
             SynthiraRu soup = new SynthiraRu("https://synthira.ru/load/drugie_igry/the_sims_4/");
             await soup.ParseData();
             //HtmlOutput.Text = soup.Names.Text();
-            HtmlOutput.Text = soup.Names.Html();
+             
+            HtmlOutput.Text = soup.GetData();
+            //HtmlOutput.Text = soup.Names.Html();
             //HtmlOutput.Text = soup.Document;
             //HtmlOutput.Text = string.Join(",", soup.Names);
             //foreach (var item in soup.Names)

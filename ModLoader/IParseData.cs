@@ -9,7 +9,6 @@ namespace ModLoader
 {
     internal interface IParseData
     {
-        string Text { get; }
         IHtmlCollection<IElement> Names { get; }
     }
 }

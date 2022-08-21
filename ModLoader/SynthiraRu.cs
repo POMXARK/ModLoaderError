@@ -1,5 +1,6 @@
 ﻿using AngleSharp;
 using AngleSharp.Dom;
+using AngleSharpExtantions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,10 @@ namespace ModLoader
     internal class SynthiraRu : BaseParse, IParseConfig, IParseData
     {
         // propfull = быстро создать свойсво
-        
+
         internal SynthiraRu(string url) : base(url)
         {
-            
+
 
         }
 
@@ -29,18 +30,17 @@ namespace ModLoader
         public string Img { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool IsUpdate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IHtmlCollection<IElement> Names { get => document.QuerySelectorAll(".filekmod .mvis");  }
+        public IHtmlCollection<IElement> Names => FindAll(".filekmod .mvis");
 
-        public string Text => throw new NotImplementedException();
 
-        public string GetText(IHtmlCollection<IElement> names)
+        public string GetData()
         {
-            throw new NotImplementedException();
-        }
-
-        public void GetData()
-        {
-            // await ParseData();    
+            var test = Find(".filekmod");
+            //test.Html();
+            return test.Find(".mvis").Html();
+            //var context = BrowsingContext.New(Configuration.Default);
+            //var document = await context.OpenAsync(r => r.Content(test.Html()));
+            //return document.ToHtml();
         }
     }
 }
