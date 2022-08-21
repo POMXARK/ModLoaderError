@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AngleSharp.Html.Parser;
 
 namespace ModLoader
 {
@@ -16,5 +17,6 @@ namespace ModLoader
         string Url { get; set; }
         IHtmlCollection<IElement> FindAll(string cssSelectors);
         IElement Find(string cssSelectors);
+        HtmlParser Parser { get; }
     }
 }

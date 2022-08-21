@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Runtime.Remoting.Contexts;
 using System.Xml.Linq;
 using System.Net;
+using AngleSharp.Html.Parser;
 
 namespace ModLoader
 {
@@ -31,6 +32,8 @@ namespace ModLoader
 
 
         public string Url{get => url; set => url = value;}
+
+        public HtmlParser Parser => new(new HtmlParserOptions { IsNotConsumingCharacterReferences = true, });
 
         public IElement Find(string cssSelectors)
         {
