@@ -38,9 +38,9 @@ namespace ModLoader
 
             SynthiraRu soup = new SynthiraRu("https://synthira.ru/load/drugie_igry/the_sims_4/");
             await soup.ParseData();
-            //HtmlOutput.Text = soup.Names.Text();
+            HtmlOutput.Text = soup.Descriptions.Text();
              
-            HtmlOutput.Text = soup.GetData();
+            //HtmlOutput.Text = soup.GetData();
             //HtmlOutput.Text = soup.Names.Html();
             //HtmlOutput.Text = soup.Document;
             //HtmlOutput.Text = string.Join(",", soup.Names);
