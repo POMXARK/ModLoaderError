@@ -12,19 +12,25 @@ using AngleSharp.Html.Parser;
 
 namespace ModLoader
 {
-    internal class BaseParse: IBaseParse
+    internal class BaseParse:  IBaseParse
     {
+        protected IBlockData data;
         protected string url;
         protected IDocument document;
         protected IBrowsingContext context;
 
-
-        internal BaseParse(string url)
+        public BaseParse(string url)
         {
+            data = Data;
             this.url = url;
-            var config = Configuration.Default.WithDefaultLoader();
-            context = BrowsingContext.New(config);
-            
+            context = BrowsingContext.New(BrowserConfiguration);
+        }
+
+        internal BaseParse(string url, IBlockData data)
+        {
+            this.data = data;
+            this.url = url;
+            context = BrowsingContext.New(BrowserConfiguration);           
         }
 
         public IBrowsingContext Context { get => context;}
@@ -34,6 +40,10 @@ namespace ModLoader
         public string Url{get => url; set => url = value;}
 
         public HtmlParser Parser => new(new HtmlParserOptions { IsNotConsumingCharacterReferences = true, });
+
+        public IBlockData Data => new BlockData();
+
+        public IConfiguration BrowserConfiguration => Configuration.Default.WithDefaultLoader();
 
         public IElement Find(string cssSelectors)
         {
