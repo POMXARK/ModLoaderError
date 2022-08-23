@@ -10,6 +10,7 @@ namespace ModLoader
     {
         string Name { get; set; }
         string Description { get; set; }
-
+        List<DateTime> DateUpdate { get; set; }
+        string Link { get; set; }
     }
 }
