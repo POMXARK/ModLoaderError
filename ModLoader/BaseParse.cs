@@ -14,23 +14,14 @@ namespace ModLoader
 {
     internal class BaseParse:  IBaseParse
     {
-        protected IBlockData data;
         protected string url;
         protected IDocument document;
         protected IBrowsingContext context;
 
         public BaseParse(string url)
         {
-            data = Data;
             this.url = url;
             context = BrowsingContext.New(BrowserConfiguration);
-        }
-
-        internal BaseParse(string url, IBlockData data)
-        {
-            this.data = data;
-            this.url = url;
-            context = BrowsingContext.New(BrowserConfiguration);           
         }
 
         public IBrowsingContext Context { get => context;}
