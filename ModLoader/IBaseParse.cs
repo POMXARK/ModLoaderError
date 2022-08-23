@@ -12,6 +12,8 @@ namespace ModLoader
     internal interface IBaseParse
     {
         Task ParseData();
+        IConfiguration BrowserConfiguration { get; }
+        IBlockData Data { get; }
         IBrowsingContext Context { get;}
         string Document { get;}
         string Url { get; set; }

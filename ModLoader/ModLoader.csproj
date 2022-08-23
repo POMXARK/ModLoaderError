@@ -86,6 +86,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BlockData.cs" />
+    <Compile Include="IBlockData.cs" />
     <Compile Include="BaseParse.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="AngleSharpExtantions.cs" />
