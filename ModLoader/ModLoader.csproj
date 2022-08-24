@@ -90,6 +90,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BlockData.cs" />
+    <Compile Include="ContentSynthiraRu.cs" />
     <Compile Include="IBlockData.cs" />
     <Compile Include="BaseParse.cs" />
     <Compile Include="Class1.cs" />

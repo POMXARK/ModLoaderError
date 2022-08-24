@@ -8,13 +8,15 @@ using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Documents;
+using System.Windows.Markup;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ModLoader
 {
-    internal class SynthiraRu : BaseParse, IParseConfig, IParseData
+    internal class SynthiraRu : ContentSynthiraRu, IParseConfig, IParseData
     {
         // propfull = быстро создать свойсво
 
@@ -36,10 +38,19 @@ namespace ModLoader
 
         public IHtmlCollection<IElement> Descriptions => FindAll(".messzhfg span");
 
-        public IHtmlCollection<IElement> Blocks => FindAll(".filekmod");
+
+        async public Task<string> GetData()
+        {
+            var data = GetContent();
+            foreach (var item in data)
+            {
+                await ParsePage(item.Link, item);
+            }
+            return data.DumpAsYaml();
+        }
 
 
-        public string GetData()
+        public string GetData(string test)
         {
             var blocks = Blocks;
             IBlockData[] datas = new IBlockData[blocks.Length];
@@ -55,25 +66,6 @@ namespace ModLoader
             }
 
             return  datas.DumpAsYaml();
-        }
-
-        public string GetData(IBlockData data)
-        {
-            var blocks = Blocks;
-            //string[] data = new string[blocks.Length];
-            for (int i = 0; i < blocks.Length; i++)
-            {
-                //data[i] = blocks[i].Text();
-                data.Name= blocks[i].Text();
-            }
-            
-            return string.Join(", ", data);
-            //return Blocks[1].Html();
-            //test.Html();
-            //return test.FindAll(".entryLink").Text();
-            //var context = BrowsingContext.New(Configuration.Default);
-            //var document = await context.OpenAsync(r => r.Content(test.Html()));
-            //return document.ToHtml();
         }
     }
 }
