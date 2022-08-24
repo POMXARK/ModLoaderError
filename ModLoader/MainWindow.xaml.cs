@@ -40,7 +40,7 @@ namespace ModLoader
             await soup.ParseData(); // обязательный метод
             //HtmlOutput.Text = soup.Descriptions.Text();
              
-            HtmlOutput.Text = soup.GetData();
+            HtmlOutput.Text = await soup.GetData();
             //HtmlOutput.Text = soup.Names.Html();
             //HtmlOutput.Text = soup.Document;
             //HtmlOutput.Text = string.Join(",", soup.Names);
