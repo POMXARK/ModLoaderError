@@ -36,11 +36,21 @@ namespace ModLoader
 
         public IConfiguration BrowserConfiguration => Configuration.Default.WithDefaultLoader();
 
+        /// <summary>
+        /// Поиск первого элемента в html документе
+        /// </summary>
+        /// <param name="cssSelectors"></param>
+        /// <returns>IElement</returns>
         public IElement Find(string cssSelectors)
         {
             return document.QuerySelector(cssSelectors);
         }
 
+        /// <summary>
+        /// Поиск всех элементов в html документе
+        /// </summary>
+        /// <param name="cssSelectors"></param>
+        /// <returns></returns>
         public IHtmlCollection<IElement> FindAll(string cssSelectors)
         {
             return document.QuerySelectorAll(cssSelectors);
