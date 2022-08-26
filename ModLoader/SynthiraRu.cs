@@ -40,7 +40,7 @@ namespace ModLoader
 
 
         async public Task<string> GetData()
-        {
+        {   
             var data = GetContent();
             foreach (var item in data)
             {

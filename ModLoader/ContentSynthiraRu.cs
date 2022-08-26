@@ -1,5 +1,6 @@
 ﻿using AngleSharp.Dom;
 using AngleSharpExtantions;
+using DownloadLinksExtantions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
@@ -29,7 +30,7 @@ namespace ModLoader
                     data.DateUpdate = blocks[i].Find(".datemsz").Html().ParseDate();
                     datas[i] = data;
                 }
-            return datas;//.DumpAsYaml();            
+            return datas;            
         }
 
         public async Task<IBlockData> ParsePage(string link, IBlockData data)
@@ -38,7 +39,9 @@ namespace ModLoader
             // https://learn.javascript.ru/css-selectors
             SynthiraRu soup = new SynthiraRu(link);
             await soup.ParseData();
-            data.LinkDownload = soup.Find(".button28").GetAttribute("href");
+            var links = soup.FindAll(".button28");
+            data.SourseDownload = links[0].GetAttribute("href");
+            data.LinkDownload = links[1].GetAttribute("href").ModsfireDownloadLink();
             data.AboutMod = soup.Find("#tab1").Html();
             return data;
         }
