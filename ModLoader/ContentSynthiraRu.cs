@@ -41,7 +41,16 @@ namespace ModLoader
             await soup.ParseData();
             var links = soup.FindAll(".button28");
             data.SourseDownload = links[0].GetAttribute("href");
-            data.LinkDownload = links[1].GetAttribute("href").ModsfireDownloadLink();
+            try
+            {
+                data.LinkDownload = links[1].GetAttribute("href").ModsfireDownloadLink();
+            }
+            catch (Exception)
+            {
+
+                data.LinkDownload = "ERROR";
+            }
+
             data.AboutMod = soup.Find("#tab1").Html();
             return data;
         }
